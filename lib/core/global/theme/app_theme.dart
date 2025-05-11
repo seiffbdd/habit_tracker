@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
 
-ThemeData get themeData {
+ThemeData get appTheme {
   return ThemeData(
-    textTheme: textTheme,
+    textTheme: appTextTheme,
     appBarTheme: const AppBarTheme(color: Colors.transparent),
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
-        foregroundColor: WidgetStateProperty.all<Color>(AppColors.lightOrange),
+        foregroundColor: WidgetStateProperty.all<Color>(AppColors.darkOrange),
       ),
     ),
     radioTheme: RadioThemeData(
@@ -17,7 +17,7 @@ ThemeData get themeData {
   );
 }
 
-TextTheme get textTheme {
+TextTheme get appTextTheme {
   return TextTheme(
     headlineLarge: TextStyle(
       fontSize: 29.sp,
