@@ -7,6 +7,7 @@ class TaskModel {
   String? subtitle;
   int? minutes;
   int? reps;
+  bool isDone;
   TaskModel({
     required this.title,
     required this.icon,
@@ -14,5 +15,6 @@ class TaskModel {
     this.subtitle,
     this.minutes,
     this.reps,
+    this.isDone = true,
   });
 }

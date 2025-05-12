@@ -20,27 +20,27 @@ ThemeData get appTheme {
 TextTheme get appTextTheme {
   return TextTheme(
     headlineLarge: TextStyle(
-      fontSize: 29.sp,
+      fontSize: 29.h,
       fontWeight: FontWeight.bold,
       color: AppColors.blackGrey,
     ),
     headlineMedium: TextStyle(
-      fontSize: 21.sp,
+      fontSize: 21.h,
       fontWeight: FontWeight.bold,
       color: AppColors.blackGrey,
     ),
     displayLarge: TextStyle(
-      fontSize: 18.sp,
+      fontSize: 18.h,
       fontWeight: FontWeight.w500,
       color: AppColors.blackGrey,
     ),
     displayMedium: TextStyle(
-      fontSize: 16.sp,
+      fontSize: 16.h,
       fontWeight: FontWeight.w500,
       color: AppColors.blackGrey,
     ),
     displaySmall: TextStyle(
-      fontSize: 14.sp,
+      fontSize: 14.h,
       fontWeight: FontWeight.w500,
       color: AppColors.blackGrey,
     ),

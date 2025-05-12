@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
-import 'package:habit_tracker/features/home/data/model/task_card_model.dart';
+import 'package:habit_tracker/features/home/data/model/task_model.dart';
 
 class TaskCard extends StatelessWidget {
   const TaskCard({super.key, required this.taskModel, this.onTap});
@@ -13,8 +13,8 @@ class TaskCard extends StatelessWidget {
       color: taskModel.color,
       child: ListTile(
         onTap: () {},
-        contentPadding: EdgeInsets.symmetric(vertical: 24.w, horizontal: 4.0),
-        leading: Icon(taskModel.icon, size: 40.w, color: AppColors.white),
+        contentPadding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 4.0),
+        leading: Icon(taskModel.icon, size: 40.h, color: AppColors.white),
         title: Text(
           taskModel.title,
           style: Theme.of(context).textTheme.headlineMedium!.copyWith(
