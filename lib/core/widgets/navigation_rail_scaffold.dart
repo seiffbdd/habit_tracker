@@ -2,14 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
 import 'package:habit_tracker/features/home/presentation/view/landscape_home_view.dart';
 
-class CustomNavigationRail extends StatefulWidget {
-  const CustomNavigationRail({super.key});
+class NavigationRailScaffold extends StatefulWidget {
+  const NavigationRailScaffold({super.key});
 
   @override
-  State<CustomNavigationRail> createState() => _CustomNavigationRailState();
+  State<NavigationRailScaffold> createState() => _CustomNavigationRailState();
 }
 
-class _CustomNavigationRailState extends State<CustomNavigationRail> {
+class _CustomNavigationRailState extends State<NavigationRailScaffold> {
   int _selectedIndex = 0;
 
   final List<Widget> screens = [
@@ -56,7 +56,7 @@ class _CustomNavigationRailState extends State<CustomNavigationRail> {
               indicatorColor: AppColors.white,
             ),
           ),
-          Expanded(flex: 9, child: screens[_selectedIndex]),
+          Expanded(flex: 10, child: screens[_selectedIndex]),
         ],
       ),
     );

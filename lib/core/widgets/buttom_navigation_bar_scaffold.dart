@@ -3,15 +3,16 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
 import 'package:habit_tracker/features/home/presentation/view/portrait_home_view.dart';
 
-class CustomButtomNavigationBar extends StatefulWidget {
-  const CustomButtomNavigationBar({super.key});
+class ButtomNavigationBarScaffold extends StatefulWidget {
+  const ButtomNavigationBarScaffold({super.key});
 
   @override
-  State<CustomButtomNavigationBar> createState() =>
+  State<ButtomNavigationBarScaffold> createState() =>
       _CustomButtomNavigationBarState();
 }
 
-class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
+class _CustomButtomNavigationBarState
+    extends State<ButtomNavigationBarScaffold> {
   int _selectedIndex = 0;
   final List<Widget> screens = [
     PortraitHomeView(),
