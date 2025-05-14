@@ -3,7 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_theme.dart';
 import 'package:habit_tracker/core/responsive_layout.dart';
 import 'package:habit_tracker/core/widgets/custom_buttom_navigation_bar.dart';
-import 'package:habit_tracker/features/home/presentation/view/landscape_home_view.dart';
+import 'package:habit_tracker/core/widgets/custom_navigation_rail.dart';
 
 void main() {
   runApp(const HabitTracker());
@@ -25,7 +25,7 @@ class HabitTracker extends StatelessWidget {
           theme: appTheme,
           home: ResponsiveLayout(
             portrait: CustomButtomNavigationBar(),
-            landscape: LandscapeHomeView(),
+            landscape: CustomNavigationRail(),
           ),
         );
       },

@@ -21,7 +21,7 @@ class LandscapeHomeView extends StatelessWidget {
           children: [
             /// Left Panel — Greeting and Progress
             Expanded(
-              flex: 4,
+              flex: 8,
               child: SingleChildScrollView(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -59,12 +59,12 @@ class LandscapeHomeView extends StatelessWidget {
               ),
             ),
 
-            /// Separator
+            /// Vertical Separator
             Expanded(child: const SizedBox()),
 
             /// Right Panel — Habits and Tasks
             Expanded(
-              flex: 6,
+              flex: 11,
               child: CustomScrollView(
                 slivers: [
                   /// Header Row

@@ -12,24 +12,27 @@ class CustomButtomNavigationBar extends StatefulWidget {
 }
 
 class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
-  int currentIndex = 0;
+  int _selectedIndex = 0;
   final List<Widget> screens = [
     PortraitHomeView(),
     Center(child: Text('Histore')),
     Center(child: Text('Progress')),
     Center(child: Text('Settings')),
   ];
+
+  void _onTap(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        onTap: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
-        currentIndex: currentIndex,
+        onTap: _onTap,
+        currentIndex: _selectedIndex,
         iconSize: 24.h,
         selectedItemColor: AppColors.lightOrange,
         unselectedItemColor: AppColors.grey,
@@ -40,7 +43,7 @@ class _CustomButtomNavigationBarState extends State<CustomButtomNavigationBar> {
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
         ],
       ),
-      body: screens[currentIndex],
+      body: screens[_selectedIndex],
     );
   }
 }

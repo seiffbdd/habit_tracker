@@ -17,47 +17,49 @@ class PortraitHomeView extends StatelessWidget {
     return Scaffold(
       floatingActionButton: CustomFloatingActionButton(),
 
-      body: Padding(
-        padding: EdgeInsets.fromLTRB(12.w, 40.h, 12.w, 12.w),
-        child: CustomScrollView(
-          slivers: [
-            SliverList(
-              delegate: SliverChildListDelegate([
-                Text(
-                  'Sun, 1 March 2022',
-                  style: Theme.of(context).textTheme.displayMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 12.w),
+          child: CustomScrollView(
+            slivers: [
+              SliverList(
+                delegate: SliverChildListDelegate([
+                  Text(
+                    'Sun, 1 March 2022',
+                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
-                ),
-                height12,
-                Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Hello, ',
-                      style: Theme.of(context).textTheme.headlineLarge!
-                          .copyWith(fontWeight: FontWeight.w500),
-                    ),
-                    Expanded(
-                      child: Text(
-                        'Susy!',
+                  height12,
+                  Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Hello, ',
                         style: Theme.of(context).textTheme.headlineLarge!
-                            .copyWith(color: AppColors.darkOrange),
-                        maxLines: 2,
-                        overflow: TextOverflow.ellipsis,
+                            .copyWith(fontWeight: FontWeight.w500),
                       ),
-                    ),
-                  ],
-                ),
-                height16,
-                CompletedHabitsPercentage(),
-                height12,
-                TextAndTextButtonRow(),
-              ]),
-            ),
-            // Task list using SliverList
-            TasksSliverList(),
-          ],
+                      Expanded(
+                        child: Text(
+                          'Susy!',
+                          style: Theme.of(context).textTheme.headlineLarge!
+                              .copyWith(color: AppColors.darkOrange),
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                    ],
+                  ),
+                  height16,
+                  CompletedHabitsPercentage(),
+                  height12,
+                  TextAndTextButtonRow(),
+                ]),
+              ),
+              // Task list using SliverList
+              TasksSliverList(),
+            ],
+          ),
         ),
       ),
     );

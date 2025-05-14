@@ -6,6 +6,7 @@ ThemeData get appTheme {
   return ThemeData(
     textTheme: appTextTheme,
     appBarTheme: const AppBarTheme(color: Colors.transparent),
+    scaffoldBackgroundColor: AppColors.white,
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all<Color>(AppColors.darkOrange),
