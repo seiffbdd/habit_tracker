@@ -3,8 +3,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
 import 'package:habit_tracker/core/global/ui_constants.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/completed_habits_percentage.dart';
+import 'package:habit_tracker/features/home/presentation/view/widgets/custom_floating_action_button.dart';
 
 import 'package:habit_tracker/features/home/presentation/view/widgets/tasks_sliver_list.dart';
+import 'package:habit_tracker/features/home/presentation/view/widgets/text_and_text_button_row.dart'
+    show TextAndTextButtonRow;
 
 class PortraitHomeView extends StatelessWidget {
   const PortraitHomeView({super.key});
@@ -12,6 +15,8 @@ class PortraitHomeView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: CustomFloatingActionButton(),
+
       body: Padding(
         padding: EdgeInsets.fromLTRB(12.w, 40.h, 12.w, 12.w),
         child: CustomScrollView(
@@ -47,28 +52,9 @@ class PortraitHomeView extends StatelessWidget {
                 height16,
                 CompletedHabitsPercentage(),
                 height12,
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Text(
-                      'Today Habits',
-                      style: Theme.of(context).textTheme.headlineLarge,
-                    ),
-                    TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'See all',
-                        style: TextStyle(
-                          fontSize: 14.h,
-                          fontWeight: FontWeight.bold,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                TextAndTextButtonRow(),
               ]),
             ),
-
             // Task list using SliverList
             TasksSliverList(),
           ],
