@@ -3,37 +3,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
 import 'package:habit_tracker/features/home/presentation/view/portrait_home_view.dart';
 
-class ButtomNavigationBarScaffold extends StatefulWidget {
-  const ButtomNavigationBarScaffold({super.key});
-
-  @override
-  State<ButtomNavigationBarScaffold> createState() =>
-      _CustomButtomNavigationBarState();
-}
-
-class _CustomButtomNavigationBarState
-    extends State<ButtomNavigationBarScaffold> {
-  int _selectedIndex = 0;
-  final List<Widget> screens = [
+class BottomNavigationBarScaffold extends StatelessWidget {
+  const BottomNavigationBarScaffold({
+    super.key,
+    required this.selectedIndex,
+    required this.onTap,
+  });
+  final int selectedIndex;
+  final ValueChanged<int> onTap;
+  final List<Widget> screens = const [
     PortraitHomeView(),
     Center(child: Text('Histore')),
     Center(child: Text('Progress')),
     Center(child: Text('Settings')),
   ];
 
-  void _onTap(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.fixed,
-        onTap: _onTap,
-        currentIndex: _selectedIndex,
+        onTap: onTap,
+        currentIndex: selectedIndex,
         iconSize: 24.h,
         selectedItemColor: AppColors.lightOrange,
         unselectedItemColor: AppColors.grey,
@@ -44,7 +35,7 @@ class _CustomButtomNavigationBarState
           BottomNavigationBarItem(icon: Icon(Icons.settings), label: ''),
         ],
       ),
-      body: screens[_selectedIndex],
+      body: screens[selectedIndex],
     );
   }
 }

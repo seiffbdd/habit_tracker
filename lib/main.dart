@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/global/theme/app_theme.dart';
-import 'package:habit_tracker/core/responsive_layout.dart';
-import 'package:habit_tracker/core/widgets/buttom_navigation_bar_scaffold.dart';
-import 'package:habit_tracker/core/widgets/navigation_rail_scaffold.dart';
+import 'package:habit_tracker/features/home/presentation/view/widgets/mode_controller.dart';
 
 void main() {
   runApp(const HabitTracker());
@@ -23,10 +21,7 @@ class HabitTracker extends StatelessWidget {
         return MaterialApp(
           debugShowCheckedModeBanner: false,
           theme: appTheme,
-          home: ResponsiveLayout(
-            portrait: ButtomNavigationBarScaffold(),
-            landscape: NavigationRailScaffold(),
-          ),
+          home: ModeController(),
         );
       },
     );

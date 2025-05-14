@@ -2,27 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
 import 'package:habit_tracker/features/home/presentation/view/landscape_home_view.dart';
 
-class NavigationRailScaffold extends StatefulWidget {
-  const NavigationRailScaffold({super.key});
-
-  @override
-  State<NavigationRailScaffold> createState() => _CustomNavigationRailState();
-}
-
-class _CustomNavigationRailState extends State<NavigationRailScaffold> {
-  int _selectedIndex = 0;
-
-  final List<Widget> screens = [
+class NavigationRailScaffold extends StatelessWidget {
+  const NavigationRailScaffold({
+    super.key,
+    required this.selectedIndex,
+    required this.onDestinationSelected,
+  });
+  final int selectedIndex;
+  final ValueChanged<int> onDestinationSelected;
+  final List<Widget> screens = const [
     LandscapeHomeView(),
     Center(child: Text('Histore')),
     Center(child: Text('Progress')),
     Center(child: Text('Settings')),
   ];
-  void _onDestinationSelected(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,13 +43,13 @@ class _CustomNavigationRailState extends State<NavigationRailScaffold> {
                   label: Text(''),
                 ),
               ],
-              selectedIndex: _selectedIndex,
-              onDestinationSelected: _onDestinationSelected,
+              selectedIndex: selectedIndex,
+              onDestinationSelected: onDestinationSelected,
               selectedIconTheme: IconThemeData(color: AppColors.lightOrange),
               indicatorColor: AppColors.white,
             ),
           ),
-          Expanded(flex: 10, child: screens[_selectedIndex]),
+          Expanded(flex: 10, child: screens[selectedIndex]),
         ],
       ),
     );
