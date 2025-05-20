@@ -4,9 +4,8 @@ import 'package:habit_tracker/core/global/theme/app_colors.dart';
 import 'package:habit_tracker/features/home/data/model/task_model.dart';
 
 class TaskCard extends StatelessWidget {
-  const TaskCard({super.key, required this.taskModel, this.onTap});
+  const TaskCard({super.key, required this.taskModel});
   final TaskModel taskModel;
-  final void Function()? onTap;
   @override
   Widget build(BuildContext context) {
     return Card(

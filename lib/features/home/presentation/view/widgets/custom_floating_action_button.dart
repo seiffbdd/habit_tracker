@@ -18,7 +18,7 @@ class CustomFloatingActionButton extends StatelessWidget {
         child: Container(
           height: 51.67.h,
           width: 51.67.h,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
             color: AppColors.darkGreen,
           ),

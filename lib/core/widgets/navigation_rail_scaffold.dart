@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/constants/screens.dart' show screens;
 import 'package:habit_tracker/core/global/theme/app_colors.dart';
-import 'package:habit_tracker/features/home/presentation/view/landscape_home_view.dart';
 
 class NavigationRailScaffold extends StatelessWidget {
   const NavigationRailScaffold({
@@ -10,12 +10,6 @@ class NavigationRailScaffold extends StatelessWidget {
   });
   final int selectedIndex;
   final ValueChanged<int> onDestinationSelected;
-  final List<Widget> screens = const [
-    LandscapeHomeView(),
-    Center(child: Text('Histore')),
-    Center(child: Text('Progress')),
-    Center(child: Text('Settings')),
-  ];
 
   @override
   Widget build(BuildContext context) {

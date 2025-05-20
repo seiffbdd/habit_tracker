@@ -33,7 +33,6 @@ class TasksSliverList extends StatelessWidget {
                   color: AppColors.lightOrange,
                   subtitle: 'Today',
                 ),
-                onTap: () {},
               ),
             ),
           ],

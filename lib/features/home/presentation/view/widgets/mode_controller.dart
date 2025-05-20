@@ -22,11 +22,11 @@ class _HomeControllerState extends State<ModeController> {
   @override
   Widget build(BuildContext context) {
     return ResponsiveLayout(
-      portrait: BottomNavigationBarScaffold(
+      mobile: BottomNavigationBarScaffold(
         selectedIndex: _selectedIndex,
         onTap: _onSelect,
       ),
-      landscape: NavigationRailScaffold(
+      tablet: NavigationRailScaffold(
         selectedIndex: _selectedIndex,
         onDestinationSelected: _onSelect,
       ),
