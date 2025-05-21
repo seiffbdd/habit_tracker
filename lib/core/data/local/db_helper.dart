@@ -76,47 +76,57 @@ class DbHelper {
     int newVersion,
   ) async {}
 
-  Future<List<Map<String, dynamic>>> readData({required String sql}) async {
-    try {
-      Database? readDb = await db;
-      final response = await readDb!.rawQuery(sql);
-      return response;
-    } catch (e) {
-      debugPrint('Error from readData => $e');
-      throw Exception('Error from readData => $e');
-    }
+  Future<int> insertData({
+    required String table,
+    required Map<String, dynamic> values,
+    ConflictAlgorithm conflictAlgorithm = ConflictAlgorithm.ignore,
+  }) async {
+    final dbClient = await db;
+    return await dbClient!.insert(
+      table,
+      values,
+      conflictAlgorithm: conflictAlgorithm,
+    );
   }
 
-  Future<int> writeData({required String sql}) async {
-    try {
-      Database? readDb = await db;
-      final response = await readDb!.rawInsert(sql);
-      return response;
-    } catch (e) {
-      debugPrint('Error from writeData => $e');
-      throw Exception('Error from writeData => $e');
-    }
+  Future<List<Map<String, dynamic>>> query({
+    required String table,
+    String? where,
+    List<Object?>? whereArgs,
+    List<String>? columns,
+    String? orderBy,
+  }) async {
+    final dbClient = await db;
+    return await dbClient!.query(
+      table,
+      where: where,
+      whereArgs: whereArgs,
+      columns: columns,
+      orderBy: orderBy,
+    );
   }
 
-  Future<int> updateData({required String sql}) async {
-    try {
-      Database? readDb = await db;
-      final response = await readDb!.rawUpdate(sql);
-      return response;
-    } catch (e) {
-      debugPrint('Error from updateData => $e');
-      throw Exception('Error from updateData => $e');
-    }
+  Future<int> update({
+    required String table,
+    required Map<String, dynamic> values,
+    required String where,
+    required List<Object?> whereArgs,
+  }) async {
+    final dbClient = await db;
+    return await dbClient!.update(
+      table,
+      values,
+      where: where,
+      whereArgs: whereArgs,
+    );
   }
 
-  Future<int> deleteData({required String sql}) async {
-    try {
-      Database? readDb = await db;
-      final response = await readDb!.rawDelete(sql);
-      return response;
-    } catch (e) {
-      debugPrint('Error from deleteData => $e');
-      throw Exception('Error from deleteData => $e');
-    }
+  Future<int> delete({
+    required String table,
+    required String where,
+    required List<Object?> whereArgs,
+  }) async {
+    final dbClient = await db;
+    return await dbClient!.delete(table, where: where, whereArgs: whereArgs);
   }
 }
