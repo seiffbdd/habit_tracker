@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:habit_tracker/core/constants/app_strings.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 
@@ -38,30 +39,31 @@ class DbHelper {
   Future<void> _onCreate(Database createDb, int version) async {
     await createDb.execute('''
     CREATE TABLE $habitTable (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      name TEXT NOT NULL,
-      icon TEXT NOT NULL,
-      color INTEGER NOT NULL,
-      time TEXT NOT NULL,
-      timeOfRemind TEXT,
-      endDate TEXT
+      ${AppStrings.id} INTEGER PRIMARY KEY AUTOINCREMENT,
+      ${AppStrings.name} TEXT NOT NULL,
+      ${AppStrings.content} TEXT,
+      ${AppStrings.content} TEXT NOT NULL,
+      ${AppStrings.color} INTEGER NOT NULL,
+      ${AppStrings.time} TEXT NOT NULL,
+      ${AppStrings.timeOfRemind} TEXT,
+      ${AppStrings.endDate} TEXT
     )
     ''');
     await createDb.execute('''
     CREATE TABLE $repeatDayTable (
-      day PRIMARY KEY,
-      habitID INTEGER NOT NULL,
-      FOREIGN KEY (habitID) REFERENCES $habitTable(id) ON DELETE CASCADE
+      ${AppStrings.day} PRIMARY KEY,
+      ${AppStrings.habitID} INTEGER NOT NULL,
+      FOREIGN KEY (${AppStrings.habitID}) REFERENCES $habitTable(${AppStrings.id}) ON DELETE CASCADE
     )
     ''');
     await createDb.execute('''
     CREATE TABLE $dailyGoalTable (
-      id INTEGER PRIMARY KEY AUTOINCREMENT,
-      type TEXT NOT NULL,
-      durationSecs INTEGER,
-      reps INTEGER,
-      habitID INTEGER NOT NULL,
-      FOREIGN KEY (habitID) REFERENCES $habitTable(id) ON DELETE CASCADE
+      ${AppStrings.id} INTEGER PRIMARY KEY AUTOINCREMENT,
+      ${AppStrings.goalType} TEXT NOT NULL,
+      ${AppStrings.durationSecs} INTEGER,
+      ${AppStrings.reps} INTEGER,
+      ${AppStrings.habitID} INTEGER NOT NULL,
+      FOREIGN KEY (${AppStrings.habitID}) REFERENCES $habitTable(${AppStrings.id}) ON DELETE CASCADE
     )
     ''');
 
@@ -76,7 +78,7 @@ class DbHelper {
 
   Future<List<Map<String, dynamic>>> readData({required String sql}) async {
     try {
-      Database? readDb = await _db;
+      Database? readDb = await db;
       final response = await readDb!.rawQuery(sql);
       return response;
     } catch (e) {

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
-import 'package:habit_tracker/features/home/data/model/task_model.dart';
+import 'package:habit_tracker/core/data/model/habit_model.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/task_card.dart';
 
 class TasksSliverList extends StatelessWidget {
@@ -27,11 +27,13 @@ class TasksSliverList extends StatelessWidget {
             Expanded(
               flex: 6,
               child: TaskCard(
-                taskModel: TaskModel(
-                  title: 'Clean as you go',
+                habitModel: HabitModel(
+                  name: 'Clean as you go',
                   icon: Icons.face,
                   color: AppColors.lightOrange,
-                  subtitle: 'Today',
+                  content: 'Today',
+                  id: 1,
+                  time: DateTime.now(),
                 ),
               ),
             ),
