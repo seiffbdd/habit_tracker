@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:habit_tracker/core/constants/screens.dart' show screens;
-import 'package:habit_tracker/core/global/theme/app_colors.dart';
+import 'package:habit_tracker/core/theme/app_colors.dart';
 
 class NavigationRailScaffold extends StatelessWidget {
   const NavigationRailScaffold({

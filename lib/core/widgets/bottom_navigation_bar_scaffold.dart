@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/constants/screens.dart';
-import 'package:habit_tracker/core/global/theme/app_colors.dart';
+import 'package:habit_tracker/core/theme/app_colors.dart';
 
 class BottomNavigationBarScaffold extends StatelessWidget {
   const BottomNavigationBarScaffold({

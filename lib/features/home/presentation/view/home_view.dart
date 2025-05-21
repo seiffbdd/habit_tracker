@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:habit_tracker/core/global/theme/app_colors.dart';
-import 'package:habit_tracker/core/global/ui_constants.dart';
+import 'package:habit_tracker/core/theme/app_colors.dart';
+import 'package:habit_tracker/core/constants/ui_constants.dart';
 import 'package:habit_tracker/core/responsive_layout.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/completed_habits_percentage.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/custom_floating_action_button.dart';
@@ -18,7 +18,7 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final _key = PageStorageKey('pageStorageKey');
+  final _pageStorageKey = PageStorageKey('pageStorageKey');
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _HomeViewState extends State<HomeView> {
       child: Padding(
         padding: EdgeInsets.fromLTRB(12.w, 0, 12.w, 12.w),
         child: CustomScrollView(
-          key: _key,
+          key: _pageStorageKey,
           slivers: [
             SliverList(
               delegate: SliverChildListDelegate([
@@ -74,7 +74,7 @@ class _HomeViewState extends State<HomeView> {
               ]),
             ),
             // Task list using SliverList
-            const TasksSliverList(),
+            TasksSliverList(),
           ],
         ),
       ),
@@ -134,7 +134,7 @@ class _HomeViewState extends State<HomeView> {
           Expanded(
             flex: 11,
             child: CustomScrollView(
-              key: _key,
+              key: _pageStorageKey,
               slivers: [
                 /// Header Row
                 SliverList(
