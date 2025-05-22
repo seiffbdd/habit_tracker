@@ -5,8 +5,16 @@ import 'package:habit_tracker/core/theme/app_colors.dart';
 ThemeData get appTheme {
   return ThemeData(
     textTheme: appTextTheme,
-    appBarTheme: const AppBarTheme(color: Colors.transparent),
-    scaffoldBackgroundColor: AppColors.white,
+
+    appBarTheme: AppBarTheme(
+      color: Colors.transparent,
+      titleTextStyle: TextStyle(
+        fontSize: 29.h,
+        fontWeight: FontWeight.bold,
+        color: AppColors.blackGrey,
+      ),
+    ),
+    scaffoldBackgroundColor: AppColors.offWhite,
     textButtonTheme: TextButtonThemeData(
       style: ButtonStyle(
         foregroundColor: WidgetStateProperty.all<Color>(AppColors.darkOrange),

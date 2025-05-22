@@ -3,7 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
 
 class CustomFloatingActionButton extends StatelessWidget {
-  const CustomFloatingActionButton({super.key});
+  const CustomFloatingActionButton({super.key, this.onPressed});
+
+  final void Function()? onPressed;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +14,7 @@ class CustomFloatingActionButton extends StatelessWidget {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(62.0.h),
       ),
-      onPressed: () {},
+      onPressed: onPressed,
       child: Padding(
         padding: EdgeInsets.all(4.0.h),
         child: Container(

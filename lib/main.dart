@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/theme/app_theme.dart';
-import 'package:habit_tracker/features/home/presentation/view/widgets/mode_controller.dart';
+import 'package:habit_tracker/core/utils/app_router.dart';
 
 void main() {
   runApp(const HabitTracker());
@@ -18,10 +18,10 @@ class HabitTracker extends StatelessWidget {
       minTextAdapt: true,
       splitScreenMode: true,
       builder: (context, child) {
-        return MaterialApp(
+        return MaterialApp.router(
           debugShowCheckedModeBanner: false,
           theme: appTheme,
-          home: ModeController(),
+          routerConfig: AppRouter.router,
         );
       },
     );

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
 import 'package:habit_tracker/core/constants/ui_constants.dart';
 import 'package:habit_tracker/core/responsive_layout.dart';
+import 'package:habit_tracker/core/utils/app_router.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/completed_habits_percentage.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/custom_floating_action_button.dart';
 
@@ -18,12 +20,16 @@ class HomeView extends StatefulWidget {
 }
 
 class _HomeViewState extends State<HomeView> {
-  final _pageStorageKey = PageStorageKey('pageStorageKey');
+  final _pageStorageKey = PageStorageKey('scrollKey');
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      floatingActionButton: CustomFloatingActionButton(),
+      floatingActionButton: CustomFloatingActionButton(
+        onPressed: () {
+          context.push(AppRouter.addHabitView);
+        },
+      ),
 
       body:
           ResponsiveLayout.isMobile(context)
