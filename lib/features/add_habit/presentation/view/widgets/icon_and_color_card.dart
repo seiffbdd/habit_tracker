@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
-import 'package:habit_tracker/features/add_habit/presentation/view/widgets/custom_button.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/labeled_action_button.dart';
 
 class IconAndColorCard extends StatelessWidget {
   const IconAndColorCard({super.key});
@@ -22,9 +22,20 @@ class IconAndColorCard extends StatelessWidget {
           Expanded(
             child: Column(
               children: [
-                CustomButton(labelText: 'Icon', disabledBorder: true),
+                LabeledActionButton(labelText: 'Icon', disabledBorder: true),
                 Divider(height: 0),
-                CustomButton(labelText: 'Color', disabledBorder: true),
+                LabeledActionButton(
+                  labelText: 'Color',
+                  disabledBorder: true,
+                  sublabel: Container(
+                    decoration: BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: AppColors.lightOrange,
+                    ),
+                    height: 22.h,
+                    width: 22.h,
+                  ),
+                ),
               ],
             ),
           ),

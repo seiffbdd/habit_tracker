@@ -2,15 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class LabeledActionButton extends StatelessWidget {
+  const LabeledActionButton({
     super.key,
     required this.labelText,
     this.suffixIcon,
+
     this.onPressed,
     this.sublabel,
     this.sublabelText,
     this.disabledBorder = false,
+    this.iconColor,
   });
   final String labelText;
   final Widget? sublabel;
@@ -18,6 +20,7 @@ class CustomButton extends StatelessWidget {
   final IconData? suffixIcon;
   final VoidCallback? onPressed;
   final bool disabledBorder;
+  final Color? iconColor;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
@@ -37,7 +40,10 @@ class CustomButton extends StatelessWidget {
         ],
       ),
 
-      icon: Icon(suffixIcon ?? Icons.arrow_forward_ios, color: AppColors.grey),
+      icon: Icon(
+        suffixIcon ?? Icons.arrow_forward_ios,
+        color: iconColor ?? AppColors.grey,
+      ),
       iconAlignment: IconAlignment.end,
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.lightGrey,

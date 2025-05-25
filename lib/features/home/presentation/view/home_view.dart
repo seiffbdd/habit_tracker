@@ -27,7 +27,7 @@ class _HomeViewState extends State<HomeView> {
     return Scaffold(
       floatingActionButton: CustomFloatingActionButton(
         onPressed: () {
-          context.push(AppRouter.addHabitView);
+          context.pushNamed(AppRouter.addHabitViewName);
         },
       ),
 

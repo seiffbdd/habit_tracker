@@ -3,15 +3,24 @@ import 'package:habit_tracker/features/add_habit/presentation/view/add_habit_vie
 import 'package:habit_tracker/features/home/presentation/view/widgets/main_view.dart';
 
 abstract class AppRouter {
-  static const mainView = '/mainView';
-  static const addHabitView = '/addHabitView';
+  static const mainViewName = 'mainView';
+  static const mainViewPath = '/';
+
+  static const addHabitViewName = 'addHabitView';
+  static const addHabitViewPath = '/addHabitView';
 
   static final router = GoRouter(
-    initialLocation: mainView,
-
     routes: [
-      GoRoute(path: mainView, builder: (context, state) => MainView()),
-      GoRoute(path: addHabitView, builder: (context, state) => AddHabitView()),
+      GoRoute(
+        name: mainViewName,
+        path: mainViewPath,
+        builder: (context, state) => const MainView(),
+      ),
+      GoRoute(
+        name: addHabitViewName,
+        path: addHabitViewPath,
+        builder: (context, state) => const AddHabitView(),
+      ),
     ],
   );
 }
