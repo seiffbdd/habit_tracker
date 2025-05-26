@@ -3,8 +3,9 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/constants/icons_by_category.dart';
 import 'package:habit_tracker/core/constants/icons_categories.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/default_icon_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_tab_bar.dart';
-import 'package:habit_tracker/features/add_habit/presentation/view/widgets/icons_grid_view.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_grid_view.dart';
 
 class BuildIconBottomSheet extends StatefulWidget {
   const BuildIconBottomSheet({super.key});
@@ -51,24 +52,31 @@ class _BuildIconBottomSheetState extends State<BuildIconBottomSheet>
                 unSelectedLabelColor: AppColors.grey,
               ),
             ),
-            Expanded(
-              child: TabBarView(
-                controller: _tabController,
-
-                children: List.generate(iconsCategories.length, (index) {
-                  /// Get the current category from the list of categories
-                  final category = iconsCategories[index];
-
-                  /// Retrieve the icons for the current category
-                  final icons = iconsByCategory[category.toLowerCase()] ?? [];
-
-                  return IconsGridView(icons: icons);
-                }),
-              ),
-            ),
+            Expanded(child: iconsTabBarView()),
           ],
         ),
       ),
+    );
+  }
+
+  TabBarView iconsTabBarView() {
+    return TabBarView(
+      controller: _tabController,
+
+      children: List.generate(iconsCategories.length, (index) {
+        /// Get the current category from the list of categories
+        final category = iconsCategories[index];
+
+        /// Retrieve the icons for the current category
+        final icons = iconsByCategory[category.toLowerCase()] ?? [];
+
+        return BuildGridView(
+          length: icons.length,
+          itemBuilder: (_, gridIndex) {
+            return DefaultIconButton(icon: icons[gridIndex]);
+          },
+        );
+      }),
     );
   }
 
