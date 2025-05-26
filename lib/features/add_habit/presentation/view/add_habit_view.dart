@@ -24,7 +24,7 @@ class _AddHabitViewState extends State<AddHabitView>
   void initState() {
     super.initState();
     _habitNameController = TextEditingController();
-    _tabController = TabController(length: 3, vsync: this);
+    _tabController = TabController(length: _endsOntabs.length, vsync: this);
   }
 
   @override
@@ -102,7 +102,7 @@ class _AddHabitViewState extends State<AddHabitView>
               height16,
               Text('Ends On', style: Theme.of(context).textTheme.displayMedium),
               height8,
-              BuildTabBar(tabController: _tabController, tabs: _tabs),
+              BuildTabBar(tabController: _tabController, tabs: _endsOntabs),
               SizedBox(
                 height: 200.h,
                 child: TabBarView(
@@ -122,7 +122,7 @@ class _AddHabitViewState extends State<AddHabitView>
     );
   }
 
-  static const List<Widget> _tabs = [
+  static const List<Widget> _endsOntabs = [
     Tab(text: 'Off'),
     Tab(text: 'Date'),
     Tab(text: 'Days'),
