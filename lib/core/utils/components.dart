@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:habit_tracker/core/theme/app_colors.dart';
 
 abstract class Components {
   static String iconDataToString(IconData iconData) {
@@ -15,6 +17,21 @@ abstract class Components {
       codePoint,
       fontFamily: fontFamily,
       fontPackage: fontPackage,
+    );
+  }
+
+  static Future<dynamic> showDefaultBottomSheet(
+    BuildContext context, {
+    required Widget child,
+  }) {
+    return showModalBottomSheet(
+      context: context,
+      backgroundColor: AppColors.blackGrey,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
+      ),
+
+      builder: (context) => child,
     );
   }
 }
