@@ -22,7 +22,7 @@ class IconAndColorCard extends StatelessWidget {
       child: Row(
         children: [
           Padding(
-            padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.h),
+            padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
             child: Icon(Icons.face),
           ),
           Expanded(
@@ -34,7 +34,7 @@ class IconAndColorCard extends StatelessWidget {
                   onPressed: () async {
                     await Components.showDefaultBottomSheet(
                       context,
-                      child: BuildIconBottomSheet(),
+                      child: const BuildIconBottomSheet(),
                     );
                   },
                 ),

@@ -36,7 +36,7 @@ class BuildBottomSheet extends StatelessWidget {
             ),
 
             // body of the bottom sheet
-            Expanded(flex: 6, child: body ?? SizedBox.shrink()),
+            Expanded(flex: 6, child: body ?? const SizedBox.shrink()),
             // footer of the bottom sheet
             if (footer != null)
               SizedBox(width: double.infinity, height: 49.h, child: footer!),

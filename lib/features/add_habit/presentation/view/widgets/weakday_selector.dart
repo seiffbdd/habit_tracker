@@ -66,7 +66,7 @@ class _WeekdaySelectorState extends State<WeekdaySelector> {
             child: Text(
               dayLabels[index],
               style: const TextStyle(
-                color: Colors.white,
+                color: AppColors.lightGrey,
                 fontWeight: FontWeight.bold,
               ),
             ),

@@ -52,14 +52,14 @@ class _BuildIconBottomSheetState extends State<BuildIconBottomSheet>
                 unSelectedLabelColor: AppColors.grey,
               ),
             ),
-            Expanded(child: iconsTabBarView()),
+            Expanded(child: _getIconsTabBarView()),
           ],
         ),
       ),
     );
   }
 
-  TabBarView iconsTabBarView() {
+  TabBarView _getIconsTabBarView() {
     return TabBarView(
       controller: _tabController,
 
