@@ -31,11 +31,12 @@ class IconAndColorCard extends StatelessWidget {
                 LabeledActionButton(
                   labelText: 'Icon',
                   disabledBorder: true,
-                  onPressed:
-                      () => Components.showDefaultBottomSheet(
-                        context,
-                        child: BuildIconBottomSheet(),
-                      ),
+                  onPressed: () async {
+                    await Components.showDefaultBottomSheet(
+                      context,
+                      child: BuildIconBottomSheet(),
+                    );
+                  },
                 ),
                 Divider(height: 0),
                 LabeledActionButton(

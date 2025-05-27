@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
 
 class BuildBottomSheet extends StatelessWidget {
@@ -37,7 +38,8 @@ class BuildBottomSheet extends StatelessWidget {
             // body of the bottom sheet
             Expanded(flex: 6, child: body ?? SizedBox.shrink()),
             // footer of the bottom sheet
-            if (footer != null) Expanded(child: footer!),
+            if (footer != null)
+              SizedBox(width: double.infinity, height: 49.h, child: footer!),
           ],
         ),
       ),
