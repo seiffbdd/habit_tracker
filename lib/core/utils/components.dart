@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:habit_tracker/core/responsive_layout.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
 
 abstract class Components {
@@ -25,13 +26,21 @@ abstract class Components {
     required Widget child,
   }) {
     return showModalBottomSheet(
+      isScrollControlled: true,
       context: context,
       backgroundColor: AppColors.blackGrey,
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(16.r)),
       ),
 
-      builder: (context) => child,
+      builder:
+          (context) => SizedBox(
+            height:
+                ResponsiveLayout.isMobile(context)
+                    ? MediaQuery.of(context).size.height * 0.5
+                    : MediaQuery.of(context).size.height * .90,
+            child: child,
+          ),
     );
   }
 }
