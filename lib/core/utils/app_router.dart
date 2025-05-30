@@ -1,5 +1,7 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/add_habit_view.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type/goal_type_cubit.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/main_view.dart';
 
 abstract class AppRouter {
@@ -19,7 +21,15 @@ abstract class AppRouter {
       GoRoute(
         name: addHabitViewName,
         path: addHabitViewPath,
-        builder: (context, state) => const AddHabitView(),
+        builder:
+            (context, state) => MultiBlocProvider(
+              providers: [
+                BlocProvider<GoalTypeCubit>(
+                  create: (context) => GoalTypeCubit(),
+                ),
+              ],
+              child: const AddHabitView(),
+            ),
       ),
     ],
   );
