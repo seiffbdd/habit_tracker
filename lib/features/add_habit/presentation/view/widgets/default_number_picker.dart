@@ -9,19 +9,23 @@ class DefaultNumberPicker extends StatelessWidget {
     required this.maxValue,
     required this.onChanged,
     required this.value,
+    this.infiniteLoop = true,
+    this.zeroPad = true,
   });
   final int minValue;
   final int maxValue;
   final Function(int value) onChanged;
   final int value;
+  final bool infiniteLoop;
+  final bool zeroPad;
   @override
   Widget build(BuildContext context) {
     return NumberPicker(
       itemCount: 5,
       minValue: minValue,
       maxValue: maxValue,
-      zeroPad: true,
-      infiniteLoop: true,
+      zeroPad: zeroPad,
+      infiniteLoop: infiniteLoop,
       selectedTextStyle: Theme.of(
         context,
       ).textTheme.displayLarge!.copyWith(color: AppColors.lightGrey),
@@ -37,6 +41,5 @@ class DefaultNumberPicker extends StatelessWidget {
       value: value,
       onChanged: onChanged,
     );
-    ;
   }
 }
