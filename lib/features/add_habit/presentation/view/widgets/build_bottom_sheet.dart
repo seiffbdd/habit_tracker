@@ -39,7 +39,7 @@ class _BuildBottomSheetState extends State<BuildBottomSheet> {
                   ),
                 ),
           ),
-
+          height12,
           // body of the bottom sheet
           Expanded(flex: 6, child: widget.body ?? const SizedBox.shrink()),
           height12,
