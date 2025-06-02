@@ -1,6 +1,6 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/data/model/goal_type.dart';
+import 'package:meta/meta.dart';
 
 part 'goal_type_state.dart';
 
@@ -19,6 +19,9 @@ class GoalTypeCubit extends Cubit<GoalTypeState> {
     emit(GoalTypeChanged());
   }
 
+  // always use savedGoalHours and savedGoalMinutes to get the saved goal time
+  // because goalHours and goalMinutes are used to change the values in the UI
+  // and they are not saved until saveGoalTime() is called
   int goalHours = 0;
   int goalMinutes = 0;
   int savedGoalHours = 0;
@@ -39,6 +42,9 @@ class GoalTypeCubit extends Cubit<GoalTypeState> {
     emit(GoalDataSaved());
   }
 
+  // always use savedGoalReps to get the saved goal reps
+  // because goalReps is used to change the values in the UI
+  // and it is not saved until saveGoalReps() is called
   int goalReps = 2;
   int savedGoalReps = 2;
   void changeGoalReps({required int reps}) {

@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/add_habit_view.dart';
-import 'package:habit_tracker/features/add_habit/presentation/view_model/add_habit_cubit/add_habit_cubit.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/reminder_cubit/reminder_cubit.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type/goal_type_cubit.dart';
 import 'package:habit_tracker/features/home/presentation/view/widgets/main_view.dart';
 
@@ -28,8 +28,8 @@ abstract class AppRouter {
                 BlocProvider<GoalTypeCubit>(
                   create: (context) => GoalTypeCubit(),
                 ),
-                BlocProvider<AddHabitCubit>(
-                  create: (context) => AddHabitCubit(),
+                BlocProvider<ReminderCubit>(
+                  create: (context) => ReminderCubit(),
                 ),
               ],
               child: const AddHabitView(),
