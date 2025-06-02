@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:habit_tracker/core/constants/icons_by_category.dart';
 import 'package:habit_tracker/core/constants/icons_categories.dart';
@@ -6,6 +7,7 @@ import 'package:habit_tracker/core/theme/app_colors.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/default_icon_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_tab_bar.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_grid_view.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/icon_and_color_cubit/icon_and_color_cubit.dart';
 
 class BuildIconBottomSheet extends StatefulWidget {
   const BuildIconBottomSheet({super.key});
@@ -73,7 +75,15 @@ class _BuildIconBottomSheetState extends State<BuildIconBottomSheet>
         return BuildGridView(
           length: icons.length,
           itemBuilder: (_, gridIndex) {
-            return DefaultIconButton(icon: icons[gridIndex]);
+            return DefaultIconButton(
+              icon: icons[gridIndex],
+              onPressed: () {
+                context.read<IconAndColorCubit>().chooseIcon(
+                  icon: icons[gridIndex],
+                );
+                Navigator.pop(context);
+              },
+            );
           },
         );
       }),

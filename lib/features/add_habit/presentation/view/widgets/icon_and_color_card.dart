@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/constants/icon_colors.dart';
@@ -8,6 +9,7 @@ import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_grid_view.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_icon_bottom_sheet.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/labeled_action_button.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/icon_and_color_cubit/icon_and_color_cubit.dart';
 
 class IconAndColorCard extends StatelessWidget {
   const IconAndColorCard({super.key});
@@ -23,7 +25,18 @@ class IconAndColorCard extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
-            child: Icon(Icons.face),
+            child: BlocBuilder<IconAndColorCubit, IconAndColorState>(
+              // buildWhen: (previous, current) => current is IconChoosed,
+              builder: (context, state) {
+                return Icon(
+                  context.read<IconAndColorCubit>().choosedIcon ??
+                      Icons.punch_clock,
+                  color:
+                      context.read<IconAndColorCubit>().choosedColor ??
+                      AppColors.darkOrange,
+                );
+              },
+            ),
           ),
           Expanded(
             child: Column(
@@ -39,13 +52,18 @@ class IconAndColorCard extends StatelessWidget {
                 LabeledActionButton(
                   labelText: 'Color',
                   disabledBorder: true,
-                  sublabel: Container(
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: AppColors.lightOrange,
-                    ),
-                    height: 22.h,
-                    width: 22.h,
+                  sublabel: BlocBuilder<IconAndColorCubit, IconAndColorState>(
+                    buildWhen: (previous, current) => current is ColorChoosed,
+                    builder: (context, state) {
+                      return Container(
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          color: context.read<IconAndColorCubit>().choosedColor,
+                        ),
+                        height: 22.h,
+                        width: 22.h,
+                      );
+                    },
                   ),
                   onPressed: () async {
                     await _buildColorsBottomSheet(context);
@@ -62,7 +80,10 @@ class IconAndColorCard extends StatelessWidget {
   Future<dynamic> _buildIconsBottomSheet(BuildContext context) {
     return Components.showDefaultBottomSheet(
       context,
-      child: const BuildIconBottomSheet(),
+      child: BlocProvider.value(
+        value: context.read<IconAndColorCubit>(),
+        child: const BuildIconBottomSheet(),
+      ),
     );
   }
 
@@ -70,13 +91,15 @@ class IconAndColorCard extends StatelessWidget {
     return Components.showDefaultBottomSheet(
       context,
       child: BuildBottomSheet(
-        titleText: 'Icon Color',
+        titleText: 'Choose Color',
         body: BuildGridView(
           length: iconColors.length,
           itemBuilder: (_, index) {
             return GestureDetector(
               onTap: () {
-                // Set the selected color in the viewmodel
+                context.read<IconAndColorCubit>().chooseColor(
+                  color: iconColors[index],
+                );
                 context.pop();
               },
               child: Center(
