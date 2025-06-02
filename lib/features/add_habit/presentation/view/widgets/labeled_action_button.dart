@@ -13,6 +13,8 @@ class LabeledActionButton extends StatelessWidget {
     this.sublabelText,
     this.disabledBorder = false,
     this.iconColor,
+    this.suffix,
+    this.padding,
   });
   final String labelText;
   final Widget? sublabel;
@@ -21,10 +23,12 @@ class LabeledActionButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final bool disabledBorder;
   final Color? iconColor;
+  final Widget? suffix;
+  final EdgeInsetsGeometry? padding;
   @override
   Widget build(BuildContext context) {
     return ElevatedButton.icon(
-      onPressed: onPressed ?? () {},
+      onPressed: onPressed,
       label: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -40,17 +44,20 @@ class LabeledActionButton extends StatelessWidget {
         ],
       ),
 
-      icon: Icon(
-        suffixIcon ?? Icons.arrow_forward_ios,
-        color: iconColor ?? AppColors.grey,
-      ),
+      icon:
+          suffix ??
+          Icon(
+            suffixIcon ?? Icons.arrow_forward_ios,
+            color: iconColor ?? AppColors.grey,
+          ),
       iconAlignment: IconAlignment.end,
       style: ElevatedButton.styleFrom(
         backgroundColor: AppColors.lightGrey,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(4.r)),
         elevation: disabledBorder ? 0 : null,
 
-        padding: EdgeInsets.symmetric(horizontal: 16.h, vertical: 24.h),
+        padding:
+            padding ?? EdgeInsets.symmetric(horizontal: 16.h, vertical: 24.h),
       ),
     );
   }
