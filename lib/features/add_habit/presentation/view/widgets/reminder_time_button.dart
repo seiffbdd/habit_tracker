@@ -74,7 +74,7 @@ class ReminderTimeButton extends StatelessWidget {
   ) {
     // BlocBuilder to rebuild the widget when the hour is scrolled
     return BlocBuilder<ReminderCubit, ReminderState>(
-      buildWhen: (previous, current) => current is HourScrolled,
+      buildWhen: (previous, current) => current is ReminderHourChanged,
       builder: (context, state) {
         return DefaultNumberPicker(
           minValue: 0,
@@ -93,7 +93,7 @@ class ReminderTimeButton extends StatelessWidget {
   ) {
     // BlocBuilder to rebuild the widget when the minute is scrolled
     return BlocBuilder<ReminderCubit, ReminderState>(
-      buildWhen: (previous, current) => current is MinuteScrolled,
+      buildWhen: (previous, current) => current is ReminderMinuteChanged,
       builder: (context, state) {
         return DefaultNumberPicker(
           minValue: 0,

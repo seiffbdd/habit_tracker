@@ -26,13 +26,15 @@ class IconAndColorCard extends StatelessWidget {
           Padding(
             padding: EdgeInsets.symmetric(vertical: 24.h, horizontal: 20.w),
             child: BlocBuilder<IconAndColorCubit, IconAndColorState>(
-              // buildWhen: (previous, current) => current is IconChoosed,
+              buildWhen:
+                  (previous, current) =>
+                      current is IconChoosed || current is ColorChoosed,
               builder: (context, state) {
                 return Icon(
-                  context.read<IconAndColorCubit>().choosedIcon ??
+                  context.read<IconAndColorCubit>().selectedIcon ??
                       Icons.punch_clock,
                   color:
-                      context.read<IconAndColorCubit>().choosedColor ??
+                      context.read<IconAndColorCubit>().selectedColor ??
                       AppColors.darkOrange,
                 );
               },
@@ -58,7 +60,8 @@ class IconAndColorCard extends StatelessWidget {
                       return Container(
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: context.read<IconAndColorCubit>().choosedColor,
+                          color:
+                              context.read<IconAndColorCubit>().selectedColor,
                         ),
                         height: 22.h,
                         width: 22.h,
