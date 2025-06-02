@@ -32,10 +32,7 @@ class IconAndColorCard extends StatelessWidget {
                   labelText: 'Icon',
                   disabledBorder: true,
                   onPressed: () async {
-                    await Components.showDefaultBottomSheet(
-                      context,
-                      child: const BuildIconBottomSheet(),
-                    );
+                    await _buildIconsBottomSheet(context);
                   },
                 ),
                 Divider(height: 0),
@@ -50,40 +47,51 @@ class IconAndColorCard extends StatelessWidget {
                     height: 22.h,
                     width: 22.h,
                   ),
-                  onPressed: () {
-                    Components.showDefaultBottomSheet(
-                      context,
-                      child: BuildBottomSheet(
-                        titleText: 'Icon Color',
-                        body: BuildGridView(
-                          length: iconColors.length,
-                          itemBuilder: (_, index) {
-                            return GestureDetector(
-                              onTap: () {
-                                // Set the selected color in the viewmodel
-                                context.pop();
-                              },
-                              child: Center(
-                                child: Container(
-                                  width: 50.w,
-                                  height: 50.w,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(4.r),
-                                    color: iconColors[index],
-                                  ),
-                                ),
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-                    );
+                  onPressed: () async {
+                    await _buildColorsBottomSheet(context);
                   },
                 ),
               ],
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Future<dynamic> _buildIconsBottomSheet(BuildContext context) {
+    return Components.showDefaultBottomSheet(
+      context,
+      child: const BuildIconBottomSheet(),
+    );
+  }
+
+  Future<dynamic> _buildColorsBottomSheet(BuildContext context) {
+    return Components.showDefaultBottomSheet(
+      context,
+      child: BuildBottomSheet(
+        titleText: 'Icon Color',
+        body: BuildGridView(
+          length: iconColors.length,
+          itemBuilder: (_, index) {
+            return GestureDetector(
+              onTap: () {
+                // Set the selected color in the viewmodel
+                context.pop();
+              },
+              child: Center(
+                child: Container(
+                  width: 50.w,
+                  height: 50.w,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(4.r),
+                    color: iconColors[index],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
       ),
     );
   }
