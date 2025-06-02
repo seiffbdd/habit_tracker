@@ -27,7 +27,6 @@ linter:
 
 bloc:
   rules:
-    - avoid_flutter_imports
     - avoid_public_bloc_methods
     - prefer_void_public_cubit_methods
 
