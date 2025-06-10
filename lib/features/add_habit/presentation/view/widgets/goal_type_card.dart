@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/core/data/model/goal_type.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/duration_labeled_action_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/reps_labeled_action_button.dart';
-import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type/goal_type_cubit.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type_cubit/goal_type_cubit.dart';
 
 class GoalTypeCard extends StatelessWidget {
   const GoalTypeCard({super.key});

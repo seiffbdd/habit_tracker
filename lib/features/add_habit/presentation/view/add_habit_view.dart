@@ -1,17 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
 import 'package:habit_tracker/core/constants/ui_constants.dart';
 import 'package:habit_tracker/core/theme/app_colors.dart';
+import 'package:habit_tracker/core/utils/components.dart';
+import 'package:habit_tracker/core/widgets/gredient_button.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_bottom_sheet.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_date_picker.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_goal_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_reminder_switch.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_tab_bar.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/default_number_picker.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/ends_on_after_x_days.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/goal_type_card.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/habit_time_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/custom_text_form_field.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/icon_and_color_card.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view/widgets/labeled_action_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/reminder_time_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/weakday_selector.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/ends_on_cubit/ends_on_cubit.dart';
 
 class AddHabitView extends StatefulWidget {
   const AddHabitView({super.key});
@@ -103,14 +112,21 @@ class _AddHabitViewState extends State<AddHabitView>
               height8,
               BuildTabBar(tabController: _tabController, tabs: _endsOntabs),
               SizedBox(
-                height: 200.h,
+                height: 80.h,
                 child: TabBarView(
                   controller: _tabController,
+
                   physics: const NeverScrollableScrollPhysics(),
                   children: [
-                    const Center(child: Text('Off')),
-                    const Center(child: Text('Date')),
-                    const Center(child: Text('Days')),
+                    const SizedBox.shrink(),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      child: BuildDatePicker(),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 8.0),
+                      child: EndsOnAfterXDays(),
+                    ),
                   ],
                 ),
               ),

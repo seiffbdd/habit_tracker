@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/labeled_action_button.dart';
-import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type/goal_type_cubit.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type_cubit/goal_type_cubit.dart';
 
 class BuildGoalButton extends StatelessWidget {
   const BuildGoalButton({super.key});

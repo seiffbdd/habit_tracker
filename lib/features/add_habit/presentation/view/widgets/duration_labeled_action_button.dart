@@ -7,7 +7,7 @@ import 'package:habit_tracker/core/widgets/gredient_button.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/build_bottom_sheet.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/default_number_picker.dart';
 import 'package:habit_tracker/features/add_habit/presentation/view/widgets/labeled_action_button.dart';
-import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type/goal_type_cubit.dart';
+import 'package:habit_tracker/features/add_habit/presentation/view_model/goal_type_cubit/goal_type_cubit.dart';
 
 class DurationLabeledActionButton extends StatelessWidget {
   const DurationLabeledActionButton({super.key, required this.goalTypeState});
