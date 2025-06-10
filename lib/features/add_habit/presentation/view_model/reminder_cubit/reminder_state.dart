@@ -7,9 +7,9 @@ final class ReminderInitial extends ReminderState {}
 
 final class ReminderSwitchClicked extends ReminderState {}
 
-final class HourScrolled extends ReminderState {}
+final class ReminderHourChanged extends ReminderState {}
 
-final class MinuteScrolled extends ReminderState {}
+final class ReminderMinuteChanged extends ReminderState {}
 
 final class ReminderTimeSaved extends ReminderState {
   ReminderTimeSaved();

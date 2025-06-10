@@ -21,12 +21,12 @@ class ReminderCubit extends Cubit<ReminderState> {
   int savedReminderMinute = 0;
   void changeReminderHour({required int hour}) {
     reminderHour = hour;
-    emit(HourScrolled());
+    emit(ReminderHourChanged());
   }
 
   void changeReminderMinute({required int minute}) {
     reminderMinute = minute;
-    emit(MinuteScrolled());
+    emit(ReminderMinuteChanged());
   }
 
   void saveReminderTime() {

@@ -6,15 +6,15 @@ part 'icon_and_color_state.dart';
 class IconAndColorCubit extends Cubit<IconAndColorState> {
   IconAndColorCubit() : super(IconAndColorInitial());
 
-  IconData? choosedIcon;
+  IconData? selectedIcon;
   void chooseIcon({required IconData icon}) {
-    choosedIcon = icon;
+    selectedIcon = icon;
     emit(IconChoosed());
   }
 
-  Color? choosedColor;
+  Color? selectedColor;
   void chooseColor({required Color color}) {
-    choosedColor = color;
+    selectedColor = color;
     emit(ColorChoosed());
   }
 }
